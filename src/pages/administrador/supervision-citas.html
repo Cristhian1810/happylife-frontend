@@ -1,0 +1,39 @@
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+        <label for="filter-date" class="block text-sm font-medium text-gray-500 mb-1">Filtrar por Fecha</label>
+        <input type="date" id="filter-date" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500">
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+        <label for="filter-doctor" class="block text-sm font-medium text-gray-500 mb-1">Filtrar por Doctor</label>
+        <input type="text" id="filter-doctor" placeholder="Nombre o apellido del doctor..." class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500">
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+        <label for="filter-status" class="block text-sm font-medium text-gray-500 mb-1">Filtrar por Estado</label>
+        <select id="filter-status" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500">
+            <option value="">Todos los estados</option>
+            </select>
+    </div>
+</div>
+
+<div class="bg-white shadow-lg rounded-xl overflow-hidden">
+    <div class="overflow-x-auto">
+        <div id="loader" class="text-center py-20 text-gray-500 flex items-center justify-center space-x-2">
+            </div>
+        <div id="error-message" class="hidden text-center py-20 text-red-600 bg-red-50 font-medium"></div>
+
+        <table class="min-w-full divide-y divide-gray-200 hidden" id="appointments-table">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Fecha y Hora</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Paciente</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Doctor</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Especialidad</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Motivo de Consulta</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Estado</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" id="appointments-table-body">
+            </tbody>
+        </table>
+    </div>
+</div>

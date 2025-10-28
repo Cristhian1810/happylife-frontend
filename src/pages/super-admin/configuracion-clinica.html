@@ -1,0 +1,64 @@
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">Configuración de la Clínica</h1>
+    <p class="text-gray-500 mb-6">Actualiza la información principal que se mostrará en todo el sistema.</p>
+
+    <div id="loader" class="text-center py-20">
+        <p class="text-gray-500">Cargando configuración...</p>
+    </div>
+
+    <div id="error-message" class="hidden bg-red-100 text-red-700 p-4 rounded-md mb-4"></div>
+    <div id="success-message" class="hidden bg-green-100 text-green-700 p-4 rounded-md mb-4"></div>
+
+    <form id="clinic-form" class="hidden">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <fieldset id="clinic-fieldset">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="nombre" class="block text-sm font-semibold text-gray-700">Nombre de la Clínica</label>
+                            <input type="text" id="nombre" name="nombre" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div>
+                            <label for="direccion" class="block text-sm font-semibold text-gray-700">Dirección</label>
+                            <textarea id="direccion" name="direccion" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></textarea>
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-sm font-semibold text-gray-700">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div>
+                            <label for="email_contacto" class="block text-sm font-semibold text-gray-700">Email de Contacto</label>
+                            <input type="email" id="email_contacto" name="email_contacto" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label for="sitio_web" class="block text-sm font-semibold text-gray-700">Sitio Web (Opcional)</label>
+                            <input type="url" id="sitio_web" name="sitio_web" placeholder="https://..." class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="numero_fiscal" class="block text-sm font-semibold text-gray-700">Número Fiscal / RUC (Opcional)</label>
+                            <input type="text" id="numero_fiscal" name="numero_fiscal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="url_logo" class="block text-sm font-semibold text-gray-700">URL del Logo (Opcional)</label>
+                            <input type="url" id="url_logo" name="url_logo" placeholder="https://.../logo.png" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div class="mt-2 text-center bg-gray-50 p-4 rounded-lg">
+                            <p class="text-xs text-gray-500 mb-2">Vista Previa del Logo</p>
+                            <img id="logo-preview" src="https://via.placeholder.com/150" alt="Logo de la clínica" class="mx-auto h-24 w-auto object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-5 border-t border-gray-200 text-right">
+                    <button type="submit" id="save-button" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-6 rounded-lg shadow-sm transition-transform transform hover:scale-105 disabled:bg-indigo-400 disabled:cursor-not-allowed">
+                        Guardar Cambios
+                    </button>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</div>
