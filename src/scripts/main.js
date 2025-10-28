@@ -56,11 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             const usuario = await response.json();
-            const nombreRol = nombresRoles[usuario.rol] || 'Usuario';
+            
+            // --- CORRECCIÓN AQUÍ ---
+            const nombreRol = nombresRoles[usuario.rol_id] || 'Usuario';
+            
             if (nombreUsuarioEl) nombreUsuarioEl.textContent = `${usuario.nombres} ${usuario.apellidos}`;
             if (rolUsuarioEl) rolUsuarioEl.textContent = nombreRol;
             if (rolSidebarEl) rolSidebarEl.textContent = nombreRol;
-            inicializarMenu(usuario.rol);
+            
+            // --- Y CORRECCIÓN AQUÍ ---
+            inicializarMenu(usuario.rol_id);
+
         } catch (error) {
             console.error("Error al cargar datos del usuario:", error);
             window.location.href = '../../index.html';
