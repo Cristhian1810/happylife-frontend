@@ -1,439 +1,114 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestión de Doctores - HappyLife (Super Admin)</title>
-    <link href="../../styles/output.css" rel="stylesheet" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="../../assets/icons/favicon.ico"
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+  <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+    <p class="text-sm text-gray-500">Total de Doctores</p>
+    <p id="total-doctores" class="text-2xl font-bold text-gray-900">0</p>
+  </div>
+  <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+    <p class="text-sm text-gray-500">Activos</p>
+    <p id="total-activos" class="text-2xl font-bold text-green-600">0</p>
+  </div>
+  <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+    <p class="text-sm text-gray-500">Inactivos</p>
+    <p id="total-inactivos" class="text-2xl font-bold text-red-600">0</p>
+  </div>
+</div>
+
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+  <div class="relative w-full md:w-1/3">
+    <i
+      class="bi bi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+    ></i>
+    <input
+      id="search-input"
+      type="text"
+      placeholder="Buscar por nombre, especialidad o DNI..."
+      class="w-full pl-10 p-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  </head>
-  <body class="bg-gray-50">
-    <aside
-      class="fixed inset-y-0 left-0 w-64 bg-slate-900 text-white z-30 transition-transform duration-300 transform -translate-x-full lg:translate-x-0"
-      id="sidebar"
+  </div>
+  <button
+    id="open-add-modal-btn"
+    class="w-full md:w-auto flex-shrink-0 flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-4 rounded-lg shadow-sm transition-transform transform hover:scale-105 cursor-pointer"
+  >
+    <svg
+      class="w-5 h-5 mr-2"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
     >
-      <div class="h-full flex flex-col">
-        <div
-          class="h-16 flex items-center px-6 border-b border-slate-700 bg-slate-800"
-        >
-          <div class="flex items-center gap-2 font-bold text-xl">
-            <img
-              src="../../assets/images/happy-life-icon-blanco.png"
-              alt="Logo"
-              class="h-8 w-8"
-            />
-            <span>HappyLife SA</span>
-          </div>
-        </div>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+      ></path>
+    </svg>
+    <span>Añadir Doctor</span>
+  </button>
+</div>
 
-        <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-          <a
-            href="dashboard.html"
-            class="flex items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            Dashboard
-          </a>
-
-          <a
-            href="configuracion-clinica.html"
-            class="flex items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            Configuración Clínica
-          </a>
-
-          <a
-            href="gestion-administradores.html"
-            class="flex items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            Administradores
-          </a>
-
-          <a
-            href="gestion-doctor.html"
-            class="flex items-center gap-3 px-3 py-2 text-white bg-indigo-600 rounded-lg transition-colors"
-          >
-            Doctores
-          </a>
-
-          <a
-            href="gestion-recepcionistas.html"
-            class="flex items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            Recepcionistas
-          </a>
-
-          <a
-            href="supervision-citas.html"
-            class="flex items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            Supervisión Global
-          </a>
-        </nav>
-
-        <div class="border-t border-slate-700 p-4 bg-slate-800">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold"
-            >
-              SA
-            </div>
-            <div class="flex-1 min-w-0">
-              <p
-                class="text-sm font-medium text-white truncate"
-                id="adminNameDisplay"
-              >
-                Super Admin
-              </p>
-            </div>
-            <button
-              id="logoutBtn"
-              class="text-slate-400 hover:text-white transition-colors"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </aside>
-
-    <div class="lg:pl-64 flex flex-col min-h-screen">
-      <header
-        class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-20 lg:hidden"
-      >
-        <button class="text-gray-500 hover:text-gray-700" id="sidebarToggle">
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-        <h1 class="text-xl font-bold text-gray-800">Gestión de Doctores</h1>
-      </header>
-
-      <main class="flex-1 p-6">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <p class="text-sm text-gray-500">Total Doctores</p>
-            <p id="total-doctores" class="text-2xl font-bold text-indigo-900">
-              0
-            </p>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <p class="text-sm text-gray-500">Activos</p>
-            <p id="total-activos" class="text-2xl font-bold text-green-600">
-              0
-            </p>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <p class="text-sm text-gray-500">Inactivos</p>
-            <p id="total-inactivos" class="text-2xl font-bold text-red-600">
-              0
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6"
-        >
-          <div class="relative w-full md:w-1/3">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Buscar por nombre, especialidad..."
-              class="w-full pl-4 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-          <button
-            onclick="openModal()"
-            class="w-full md:w-auto px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 flex items-center justify-center gap-2"
-          >
-            <span>+ Nuevo Doctor</span>
-          </button>
-        </div>
-
-        <div
-          class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
-        >
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                  >
-                    Doctor
-                  </th>
-                  <th
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                  >
-                    Especialidad
-                  </th>
-                  <th
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                  >
-                    Colegiatura
-                  </th>
-                  <th
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                  >
-                    Contacto
-                  </th>
-                  <th
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                  >
-                    Estado
-                  </th>
-                  <th
-                    class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
-                  >
-                    Acciones
-                  </th>
-                </tr>
-              </thead>
-              <tbody
-                class="bg-white divide-y divide-gray-200"
-                id="doctorsTableBody"
-              ></tbody>
-            </table>
-          </div>
-        </div>
-      </main>
-    </div>
-
+<div class="bg-white shadow-lg rounded-xl overflow-hidden">
+  <div class="overflow-x-auto">
     <div
-      id="doctorModal"
-      class="fixed inset-0 z-50 hidden overflow-y-auto"
-      aria-labelledby="modal-title"
-      role="dialog"
-      aria-modal="true"
+      id="loader"
+      class="text-center py-20 text-gray-500 flex items-center justify-center space-x-2"
+    ></div>
+    <div
+      id="error-message"
+      class="hidden text-center py-20 text-red-600 bg-red-50 font-medium"
+    ></div>
+
+    <table
+      class="min-w-full divide-y divide-gray-200 hidden"
+      id="doctors-table"
     >
-      <div
-        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
-      >
-        <div
-          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-          aria-hidden="true"
-          onclick="closeModal()"
-        ></div>
-        <div
-          class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
-        >
-          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <h3 class="text-lg font-medium text-gray-900 mb-4" id="modalTitle">
-              Nuevo Doctor
-            </h3>
-            <form id="doctorForm" class="space-y-4">
-              <input type="hidden" id="doctorId" />
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Nombres</label
-                  >
-                  <input
-                    type="text"
-                    id="nombres"
-                    name="nombres"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Apellidos</label
-                  >
-                  <input
-                    type="text"
-                    id="apellidos"
-                    name="apellidos"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                  />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >DNI</label
-                  >
-                  <input
-                    type="text"
-                    id="dni"
-                    name="dni"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Nº Colegiatura</label
-                  >
-                  <input
-                    type="text"
-                    id="numero_colegiatura"
-                    name="numero_colegiatura"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                  />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Teléfono</label
-                  >
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                  />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Título Profesional</label
-                  >
-                  <select
-                    id="titulo_profesional"
-                    name="titulo_profesional_id"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9"
-                  ></select>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700"
-                    >Especialidad</label
-                  >
-                  <select
-                    id="especialidades"
-                    name="especialidad_id"
-                    required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9"
-                  ></select>
-                  <p class="text-xs text-gray-500 mt-1">
-                    Seleccione una única especialidad.
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Biografía</label
-                >
-                <textarea
-                  id="biografia"
-                  name="biografia"
-                  rows="2"
-                  class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm px-2 py-1"
-                ></textarea>
-              </div>
-
-              <div id="passwordField">
-                <label class="block text-sm font-medium text-gray-700"
-                  >Contraseña</label
-                >
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  required
-                  class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 sm:text-sm h-9 px-2"
-                />
-              </div>
-
-              <div
-                class="flex items-center"
-                id="estadoField"
-                style="display: none"
-              >
-                <input
-                  type="checkbox"
-                  id="esta_activo"
-                  name="esta_activo"
-                  class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label class="ml-2 block text-sm text-gray-900"
-                  >Usuario Activo</label
-                >
-              </div>
-
-              <div
-                class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense"
-              >
-                <button
-                  type="submit"
-                  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 sm:col-start-2 sm:text-sm"
-                >
-                  Guardar
-                </button>
-                <button
-                  type="button"
-                  onclick="closeModal()"
-                  class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:col-start-1 sm:text-sm"
-                >
-                  Cancelar
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script
-      type="module"
-      src="../../scripts/super-admin/gestion-doctor.js"
-    ></script>
-    <script>
-      const sidebar = document.getElementById('sidebar');
-      const sidebarToggle = document.getElementById('sidebarToggle');
-      let isSidebarOpen = false;
-      sidebarToggle.addEventListener('click', () => {
-        isSidebarOpen = !isSidebarOpen;
-        sidebar.classList.toggle('-translate-x-full', !isSidebarOpen);
-      });
-    </script>
-  </body>
-</html>
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Nombres
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Apellidos
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Especialidades
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Nro. Colegiatura
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            DNI
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Email
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Estado
+          </th>
+          <th
+            class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+          >
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="bg-white divide-y divide-gray-200"
+        id="doctors-table-body"
+      ></tbody>
+    </table>
+  </div>
+</div>
