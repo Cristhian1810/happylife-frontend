@@ -140,8 +140,14 @@ function populateProfileData(user) {
   profileDni.textContent = `DNI: ${user.dni || 'No definido'}`;
   profileEmail.textContent = `Email: ${user.email || 'No definido'}`;
 
+  // Llenar campos, incluyendo soporte para fecha_nacimiento que puede venir como snake_case pero el input ser camelCase
   Object.keys(originalProfileData).forEach((key) => {
-    const element = document.getElementById(key);
+    let element = document.getElementById(key);
+    if (!element && key.includes('_')) {
+      const camelKey = key.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
+      element = document.getElementById(camelKey);
+    }
+
     if (element) {
       element.value =
         originalProfileData[key] === null ? '' : originalProfileData[key];
@@ -229,6 +235,13 @@ profileForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(profileForm);
   const data = Object.fromEntries(formData.entries());
+
+  // CORRECCIÓN: Forzar inclusión de datos originales si faltan en el form
+  if (!data.nombres) data.nombres = originalProfileData.nombres;
+  if (!data.apellidos) data.apellidos = originalProfileData.apellidos;
+  if (!data.email) data.email = originalProfileData.email;
+  if (!data.telefono) data.telefono = originalProfileData.telefono;
+  if (!data.dni) data.dni = originalProfileData.dni;
 
   try {
     const result = await fetchAPI('/perfil/actualizar', {

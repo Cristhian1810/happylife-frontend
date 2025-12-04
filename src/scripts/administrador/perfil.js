@@ -140,8 +140,15 @@ function populateProfileData(user) {
   profileDni.textContent = `DNI: ${user.dni || 'No definido'}`;
   profileEmail.textContent = `Email: ${user.email || 'No definido'}`;
 
+  // Llenar campos automáticamente
   Object.keys(originalProfileData).forEach((key) => {
-    const element = document.getElementById(key);
+    let element = document.getElementById(key);
+    // Intento secundario para camelCase (ej: fecha_nacimiento -> fechaNacimiento)
+    if (!element && key.includes('_')) {
+      const camelKey = key.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
+      element = document.getElementById(camelKey);
+    }
+
     if (element) {
       element.value =
         originalProfileData[key] === null ? '' : originalProfileData[key];
@@ -203,7 +210,6 @@ async function initProfilePage() {
       );
     }
 
-    // CORREGIDO: Se usa 'genero_id' para que coincida con el HTML
     populateSelectWithOptions(
       'genero_id',
       gendersData,
@@ -229,6 +235,14 @@ profileForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(profileForm);
   const data = Object.fromEntries(formData.entries());
+
+  // CORRECCIÓN: Asegurar que los campos obligatorios se envíen desde los datos originales si no están en el formulario
+  if (!data.nombres) data.nombres = originalProfileData.nombres;
+  if (!data.apellidos) data.apellidos = originalProfileData.apellidos;
+  if (!data.email) data.email = originalProfileData.email;
+  if (!data.telefono) data.telefono = originalProfileData.telefono;
+  // DNI generalmente no cambia, pero asegúrate de enviarlo si el backend lo requiere para validaciones
+  if (!data.dni) data.dni = originalProfileData.dni;
 
   try {
     const result = await fetchAPI('/perfil/actualizar', {

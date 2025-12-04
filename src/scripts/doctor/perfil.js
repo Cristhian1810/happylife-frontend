@@ -162,7 +162,13 @@ function populateProfileData(user) {
   profileEmail.textContent = `Email: ${user.email || 'No definido'}`;
 
   Object.keys(user).forEach((key) => {
-    const element = document.getElementById(key);
+    let element = document.getElementById(key);
+    // Verificación adicional para fecha de nacimiento en caso de inconsistencia de IDs
+    if (!element && key.includes('_')) {
+      const camelKey = key.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
+      element = document.getElementById(camelKey);
+    }
+
     if (element) {
       element.value = user[key] === null ? '' : user[key];
     }
@@ -275,7 +281,13 @@ profileForm.addEventListener('submit', async (e) => {
   );
   data.especialidades = Array.from(checkedSpecialties).map((cb) => cb.value);
 
-  // El DNI está deshabilitado, por lo que no se envía. Lo añadimos manualmente desde los datos originales.
+  // CORRECCIÓN: Agregar campos que no se capturan en formData si no son inputs editables
+  if (!data.nombres) data.nombres = originalProfileData.nombres;
+  if (!data.apellidos) data.apellidos = originalProfileData.apellidos;
+  if (!data.email) data.email = originalProfileData.email;
+  if (!data.telefono) data.telefono = originalProfileData.telefono;
+
+  // El DNI está deshabilitado, por lo que no se envía. Lo añadimos manualmente.
   data.dni = originalProfileData.dni;
 
   try {
