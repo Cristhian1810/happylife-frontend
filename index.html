@@ -1,155 +1,354 @@
 <!DOCTYPE html>
 <html lang="es" class>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./src/assets/icons/favicon.ico">
-    <link rel="stylesheet" href="./src/styles/output.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./src/assets/icons/favicon.ico"
+    />
+    <link rel="stylesheet" href="./src/styles/output.css" />
     <title>HappyLife</title>
-</head>
+  </head>
 
-<body class="bg-white dark:bg-black">
+  <body class="bg-white dark:bg-black">
     <header
-        class="sticky top-5 flex justify-between items-center mx-auto mt-5 px-4 py-3 max-w-[1200px] rounded-full bg-white/20 dark:bg-black/20 backdrop-blur-md border border-white/30 dark:border-black/30">
-        <a href="#" class="flex items-center py-1 px-2 rounded-full hover:dark:bg-[#1F1F22]">
-            <img id="logo1" src="./src/assets/images/happy-life-icon-negro.png" alt="logo" class="w-6 h-6 mr-2">
-            <p class="text-[18px] dark:text-[#E4E2E5]"><b>HappyLife</b></p>
-        </a>
-        <nav class="flex items-center gap-8 text-[16px] dark:text-[#7E8088]">
-            <a href="#">Características</a>
-            <a href="#">Beneficios</a>
-            <a href="#">Contacto</a>
-        </nav>
-        <button id="btn-tema" class="p-2 cursor-pointer rounded-2xl hover:bg-gray-300 dark:hover:bg-[#1F1F22]">
-            <img id="sun-icon" src="./src/assets/icons/sun-negro.svg" alt="sun" class="w-5 h-5">
-        </button>
+      class="sticky top-5 flex justify-between items-center mx-auto mt-5 px-4 py-3 max-w-[1200px] rounded-full bg-white/20 dark:bg-black/20 backdrop-blur-md border border-white/30 dark:border-black/30"
+    >
+      <a
+        href="#"
+        class="flex items-center py-1 px-2 rounded-full hover:dark:bg-[#1F1F22]"
+      >
+        <img
+          id="logo1"
+          src="./src/assets/images/happy-life-icon-negro.png"
+          alt="logo"
+          class="w-6 h-6 mr-2"
+        />
+        <p class="text-[18px] dark:text-[#E4E2E5]"><b>HappyLife</b></p>
+      </a>
+      <nav class="flex items-center gap-8 text-[16px] dark:text-[#7E8088]">
+        <a href="#">Características</a>
+        <a href="#">Beneficios</a>
+        <a href="#">Contacto</a>
+      </nav>
+      <button
+        id="btn-tema"
+        class="p-2 cursor-pointer rounded-2xl hover:bg-gray-300 dark:hover:bg-[#1F1F22]"
+      >
+        <img
+          id="sun-icon"
+          src="./src/assets/icons/sun-negro.svg"
+          alt="sun"
+          class="w-5 h-5"
+        />
+      </button>
     </header>
     <main>
-        <div class="flex flex-col items-center mx-auto mt-10 mb-8 max-w-[600px]">
-            <div
-                class="inline-block mb-5 p-4 border border-gray-300 shadow-2xl rounded-2xl dark:bg-[#1F1F22] dark:border-none">
-                <img id="logo2" src="./src/assets/images/happy-life-icon-negro.png" alt="logo" class="w-10 h-10">
-            </div>
-            <h1 class="mb-5 text-5xl text-center dark:text-[#E4E2E5]">La manera más fácil de gestionar tus citas médicas
-            </h1>
-            <p class="mb-8 text-xl text-center dark:text-[#7E8088]">Digitaliza tu consulta, simplifica tus citas y
-                ofrece una mejor experiencia a tus pacientes.</p>
-            <div class="flex gap-3 text-[16px]">
-                <button id="open-modal-btn"
-                    class="px-5 py-3 rounded-full cursor-pointer bg-black text-white dark:bg-white dark:text-black">Comenzar
-                    ahora</button>
-                <a href="#" id="open-login-btn"
-                    class="px-5 py-3 border rounded-full dark:bg-transparent cursor-pointer dark:text-white dark:border-[#434348]">Iniciar
-                    sesión</a>
-            </div>
+      <div class="flex flex-col items-center mx-auto mt-10 mb-8 max-w-[600px]">
+        <div
+          class="inline-block mb-5 p-4 border border-gray-300 shadow-2xl rounded-2xl dark:bg-[#1F1F22] dark:border-none"
+        >
+          <img
+            id="logo2"
+            src="./src/assets/images/happy-life-icon-negro.png"
+            alt="logo"
+            class="w-10 h-10"
+          />
         </div>
-        <div class="mx-auto p-5 max-w-[1200px] rounded-4xl bg-[#27272A]">
-            <img src="./src/assets/images/app-preview.png" alt="app-preview" class="rounded-3xl">
+        <h1 class="mb-5 text-5xl text-center dark:text-[#E4E2E5]">
+          La manera más fácil de gestionar tus citas médicas
+        </h1>
+        <p class="mb-8 text-xl text-center dark:text-[#7E8088]">
+          Digitaliza tu consulta, simplifica tus citas y ofrece una mejor
+          experiencia a tus pacientes.
+        </p>
+        <div class="flex gap-3 text-[16px]">
+          <button
+            id="open-modal-btn"
+            class="px-5 py-3 rounded-full cursor-pointer bg-black text-white dark:bg-white dark:text-black"
+          >
+            Comenzar ahora
+          </button>
+          <a
+            href="#"
+            id="open-login-btn"
+            class="px-5 py-3 border rounded-full dark:bg-transparent cursor-pointer dark:text-white dark:border-[#434348]"
+            >Iniciar sesión</a
+          >
         </div>
+      </div>
+      <div class="mx-auto p-5 max-w-[1200px] rounded-4xl bg-[#27272A]">
+        <img
+          src="./src/assets/images/app-preview.png"
+          alt="app-preview"
+          class="rounded-3xl"
+        />
+      </div>
     </main>
 
-    <div id="modal"
-        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out p-4">
+    <section class="bg-indigo-50 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-8">
+          ¿Necesitas Ayuda?
+        </h2>
+        <p class="text-lg text-gray-600 mb-10">
+          Estamos aquí para asistirte. Contáctanos por cualquiera de estos
+          medios:
+        </p>
 
-        <div id="modal-content"
-            class="bg-white dark:bg-[#18181B] text-black dark:text-white p-6 sm:p-8 rounded-2xl w-full max-w-lg shadow-2xl relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
-
-            <button id="close-modal"
-                class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">✕</button>
-
-            <div class="text-center mb-6">
-                <h2 class="text-2xl sm:text-3xl font-bold">Crea tu Cuenta en HappyLife</h2>
-                <p class="text-gray-500 dark:text-gray-400 mt-1">Regístrate como paciente para agendar tus citas.</p>
+        <div class="flex flex-col md:flex-row justify-center gap-8">
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center gap-4 min-w-[300px]"
+          >
+            <div class="bg-indigo-100 p-3 rounded-full text-indigo-600">
+              <i class="bi bi-envelope-fill text-2xl"></i>
             </div>
+            <div class="text-left">
+              <p
+                class="text-sm text-gray-500 font-semibold uppercase tracking-wide"
+              >
+                Correo Electrónico
+              </p>
+              <a
+                href="mailto:perezdiazyerrifranklin@gmail.com"
+                class="text-lg font-medium text-gray-900 hover:text-indigo-600 transition-colors"
+              >
+                perezdiazyerrifranklin@gmail.com
+              </a>
+            </div>
+          </div>
 
-            <form id="register-form" class="space-y-6">
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input name="nombres" type="text" placeholder="Nombres" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                        <input name="apellidos" type="text" placeholder="Apellidos" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                        <input name="dni" type="text" placeholder="DNI" required maxlength="8"
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                        <input name="telefono" type="tel" placeholder="Teléfono" required maxlength="9"
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                        <input name="email" type="email" placeholder="Correo Electrónico" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                        <input name="fechaNacimiento" type="text" placeholder="Fecha de Nacimiento"
-                            onfocus="(this.type='date')" onblur="(this.type='text')" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-
-                        <select id="genero-select" name="genero" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus-ring-white transition-shadow">
-                            <option value="" disabled selected>Selecciona tu género</option>
-                        </select>
-
-                        <input name="password" type="password" placeholder="Contraseña" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                        <input name="password_confirmation" type="password" placeholder="Repetir Contraseña" required
-                            class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-3 pt-2">
-                    <input type="checkbox" id="terms" required
-                        class="h-4 w-4 rounded border-gray-300 text-black focus:ring-black/50 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="terms" class="text-sm text-gray-600 dark:text-gray-400">Acepto los <a href="#"
-                            class="font-medium hover:underline text-black dark:text-white">Términos y la
-                            Política</a></label>
-                </div>
-
-                <button type="submit"
-                    class="w-full bg-black text-white py-3 rounded-lg dark:bg-white dark:text-black hover:opacity-90 transition-opacity duration-200 font-semibold">Crear
-                    Cuenta</button>
-            </form>
-
-            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
-                ¿Ya tienes una cuenta?
-                <a href="#" id="switch-to-login" class="font-semibold text-black dark:text-white hover:underline">Inicia
-                    sesión</a>
-            </p>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center gap-4 min-w-[300px]"
+          >
+            <div class="bg-green-100 p-3 rounded-full text-green-600">
+              <i class="bi bi-whatsapp text-2xl"></i>
+            </div>
+            <div class="text-left">
+              <p
+                class="text-sm text-gray-500 font-semibold uppercase tracking-wide"
+              >
+                WhatsApp
+              </p>
+              <a
+                href="https://wa.me/51993441303"
+                target="_blank"
+                class="text-lg font-medium text-gray-900 hover:text-green-600 transition-colors"
+              >
+                +51 993 441 303
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <div
+      id="modal"
+      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out p-4"
+    >
+      <div
+        id="modal-content"
+        class="bg-white dark:bg-[#18181B] text-black dark:text-white p-6 sm:p-8 rounded-2xl w-full max-w-lg shadow-2xl relative transform transition-all duration-300 ease-in-out scale-95 opacity-0"
+      >
+        <button
+          id="close-modal"
+          class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          ✕
+        </button>
+
+        <div class="text-center mb-6">
+          <h2 class="text-2xl sm:text-3xl font-bold">
+            Crea tu Cuenta en HappyLife
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400 mt-1">
+            Regístrate como paciente para agendar tus citas.
+          </p>
+        </div>
+
+        <form id="register-form" class="space-y-6">
+          <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                name="nombres"
+                type="text"
+                placeholder="Nombres"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+              <input
+                name="apellidos"
+                type="text"
+                placeholder="Apellidos"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+              <input
+                name="dni"
+                type="text"
+                placeholder="DNI"
+                required
+                maxlength="8"
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+              <input
+                name="telefono"
+                type="tel"
+                placeholder="Teléfono"
+                required
+                maxlength="9"
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Correo Electrónico"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+              <input
+                name="fechaNacimiento"
+                type="text"
+                placeholder="Fecha de Nacimiento"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+
+              <select
+                id="genero-select"
+                name="genero"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus-ring-white transition-shadow"
+              >
+                <option value="" disabled selected>Selecciona tu género</option>
+              </select>
+
+              <input
+                name="password"
+                type="password"
+                placeholder="Contraseña"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+              <input
+                name="password_confirmation"
+                type="password"
+                placeholder="Repetir Contraseña"
+                required
+                class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              />
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 pt-2">
+            <input
+              type="checkbox"
+              id="terms"
+              required
+              class="h-4 w-4 rounded border-gray-300 text-black focus:ring-black/50 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label for="terms" class="text-sm text-gray-600 dark:text-gray-400"
+              >Acepto los
+              <a
+                href="#"
+                class="font-medium hover:underline text-black dark:text-white"
+                >Términos y la Política</a
+              ></label
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-black text-white py-3 rounded-lg dark:bg-white dark:text-black hover:opacity-90 transition-opacity duration-200 font-semibold"
+          >
+            Crear Cuenta
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+          ¿Ya tienes una cuenta?
+          <a
+            href="#"
+            id="switch-to-login"
+            class="font-semibold text-black dark:text-white hover:underline"
+            >Inicia sesión</a
+          >
+        </p>
+      </div>
     </div>
 
-    <div id="login-modal"
-        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out p-4">
-        <div id="login-modal-content"
-            class="bg-white dark:bg-[#18181B] text-black dark:text-white p-6 sm:p-8 rounded-2xl w-full max-w-md shadow-2xl relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
+    <div
+      id="login-modal"
+      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out p-4"
+    >
+      <div
+        id="login-modal-content"
+        class="bg-white dark:bg-[#18181B] text-black dark:text-white p-6 sm:p-8 rounded-2xl w-full max-w-md shadow-2xl relative transform transition-all duration-300 ease-in-out scale-95 opacity-0"
+      >
+        <button
+          id="close-login-modal"
+          class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          ✕
+        </button>
 
-            <button id="close-login-modal"
-                class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">✕</button>
-
-            <div class="text-center mb-6">
-                <h2 class="text-2xl sm:text-3xl font-bold">Inicia Sesión en HappyLife</h2>
-                <p class="text-gray-500 dark:text-gray-400 mt-1">Ingresa tus credenciales para acceder.</p>
-            </div>
-
-            <form id="login-form" class="space-y-6">
-                <div class="space-y-4">
-                    <input name="email" type="email" placeholder="Correo Electrónico" required
-                        class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                    <input name="password" type="password" placeholder="Contraseña" required
-                        class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow">
-                </div>
-
-                <button type="submit"
-                    class="w-full bg-black text-white py-3 rounded-lg dark:bg-white dark:text-black hover:opacity-90 transition-opacity duration-200 font-semibold cursor-pointer">Iniciar
-                    Sesión</button>
-            </form>
-
-            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
-                ¿No tienes una cuenta?
-                <a href="#" id="switch-to-register"
-                    class="font-semibold text-black dark:text-white hover:underline">Regístrate</a>
-            </p>
+        <div class="text-center mb-6">
+          <h2 class="text-2xl sm:text-3xl font-bold">
+            Inicia Sesión en HappyLife
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400 mt-1">
+            Ingresa tus credenciales para acceder.
+          </p>
         </div>
+
+        <form id="login-form" class="space-y-6">
+          <div class="space-y-4">
+            <input
+              name="email"
+              type="email"
+              placeholder="Correo Electrónico"
+              required
+              class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Contraseña"
+              required
+              class="w-full p-3 bg-gray-100 dark:bg-[#27272A] text-black dark:text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-black text-white py-3 rounded-lg dark:bg-white dark:text-black hover:opacity-90 transition-opacity duration-200 font-semibold cursor-pointer"
+          >
+            Iniciar Sesión
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+          ¿No tienes una cuenta?
+          <a
+            href="#"
+            id="switch-to-register"
+            class="font-semibold text-black dark:text-white hover:underline"
+            >Regístrate</a
+          >
+        </p>
+      </div>
     </div>
 
-    <div id="toast-container" class="fixed top-4 right-4 z-[100] flex flex-col gap-3"></div>
+    <div
+      id="toast-container"
+      class="fixed top-4 right-4 z-[100] flex flex-col gap-3"
+    ></div>
 
     <script src="./src/scripts/index.js"></script>
-</body>
-
+  </body>
 </html>
